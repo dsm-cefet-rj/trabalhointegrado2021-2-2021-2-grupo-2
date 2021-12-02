@@ -17,7 +17,7 @@ class CriarConta extends React.Component {
             <div className="login-page">
                 <div className="login-header">
                     <h1>Djan</h1>
-                    <h1>Criar Conta</h1>
+                    <h2>Criar Conta</h2>
                 </div>
                 <div className="container">
                     <form onSubmit={this.criarConta} className="login-body">
