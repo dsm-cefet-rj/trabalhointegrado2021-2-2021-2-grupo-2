@@ -30,7 +30,7 @@ class Login extends React.Component {
                         </div>
                         <div className="loginButtons">
                             <div className="d-grid gap-2">
-                                <Button type="submit" variant="outline-success">Entar</Button>
+                                <Button type="submit" variant="outline-success">Entrar</Button>
                                 <Link href="/criar-conta" variant="outline-warning">Criar Conta</Link>
                             </div>
                         </div>
