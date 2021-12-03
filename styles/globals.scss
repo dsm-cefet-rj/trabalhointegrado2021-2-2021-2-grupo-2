@@ -1,0 +1,57 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Erica+One&display=swap");
+
+.loginPage {
+  width: max-content;
+  padding: 8% 0 0;
+  margin: auto;
+}
+
+.loginButtons {
+  margin-top: 10vh;
+}
+
+.loginHeader {
+  display: block;
+  h1 {
+    font-size: 5rem;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  h2 {
+    font-size: 1.5rem;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: #000000;
+  }
+  text-align: center;
+  font-family: "Erica One", cursive;
+}
+
+.profileMinPicture {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
