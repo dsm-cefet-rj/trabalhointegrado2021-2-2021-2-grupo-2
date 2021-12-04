@@ -1,35 +1,39 @@
 <!DOCTYPE HTML>
 <html lang="utf-8">
+
 <head>
     <meta charset="pt-br">
     <title> Tela login </title>
     <link rel="icon" type="image/x-icon" href="logo4.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+         crossorigin="anonymous"/>
     <style>
-        h1{
+        h1 {
             text-align: center;
             font-size: 350%;
         }
 
-        body{
+        body {
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        .grupo{
+        .grupo {
             position: absolute;
             left: 43%;
             border: 0;
         }
 
-        label{
+        label {
             font-size: 12px;
         }
 
-        input{
+        input {
             border-radius: 5px;
-            
+
         }
 
-        .botaologin{
+        .botaologin {
             background-color: rgb(105, 105, 223);
             text-align: center;
             color: #f7f7f7;
@@ -37,27 +41,31 @@
             height: 25px;
             border: 0;
             margin-left: 18%;
-            
+
         }
-        .botaologin:hover{
-            background-color:#185396;
+
+        .botaologin:hover {
+            background-color: #185396;
         }
     </style>
 </head>
+
 <body>
     <h1> DJAN </h1>
     <form>
-        <fieldset class = "grupo">
+        <fieldset class="grupo">
             <label for="NomeConta">Nome conta</label><br>
             <input type="text" id="Nome_conta" name="Nome_conta"><br>
 
             <label for="Senha">Senha</label><br>
             <input type="password" id="senha" name="senha"><br><br>
-            
-            <button class = "botaologin">Entrar</button>
-            <br><br><br><br><br><br><br>
-            <button class = "botaologin">Criar conta DJAN</button>
+
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <a class="btn btn-outline-success" href="Feed.html">Entrar</a><br>
+                <a class="btn btn-outline-warning" href="Cadastro.html">Criar conta DJAN</a>
+            </div>
         </fieldset>
     </form>
 </body>
+
 </html>
