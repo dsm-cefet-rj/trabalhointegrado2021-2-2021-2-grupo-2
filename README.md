@@ -2,16 +2,26 @@
 
 # DJAN
 
+Uma rede social com mensagens temporárias e personalizadas.
+
 Integrantes: Andressa Dos Santos, Dayvison Augusto De Oliveira Da Costa, José Paulo Macedo, Nicolas Vycas Nery 
 
-## Getting Started
+## Como modificar?
 
-First, run the development server:
+Primeiro, baixe as dependências:
 
 ```bash
-npm run dev
-# or
-yarn dev
+
+npm install
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Segundo, inicie o servidor de desenvolvimento:
+
+```bash
+
+npm run dev
+
+```
+
+Terceiro, abra o link [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado.
