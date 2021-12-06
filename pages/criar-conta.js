@@ -29,10 +29,11 @@ class Criarconta extends React.Component {
 
         return (
             <div className="loginPage">
-                <div className="LoginHeader">
+                <div className="loginHeader">
                     <h1>Djan</h1>
-                    <h2>Criar nova conta</h2>
+                    
                 </div>
+                <h2>Criar nova conta</h2>
                 <CriarConta />
             </div>
         );
