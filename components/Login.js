@@ -29,9 +29,11 @@ class Login extends React.Component {
                             {this.state.error}
                         </div>
                         <div className="loginButtons">
-                            <div className="d-grid gap-2">
+                            <div className="row">
                                 <Button type="submit" variant="outline-success">Entrar</Button>
-                                <Link href="/criar-conta" variant="outline-warning">Criar Conta</Link>
+                            </div>
+                            <div className="row">
+                                <Link href="/criar-conta" class="btn btn-outline-warning" >Criar Conta</Link>
                             </div>
                         </div>
                     </form>

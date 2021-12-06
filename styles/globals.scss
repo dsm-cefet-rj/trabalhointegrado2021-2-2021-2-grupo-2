@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Erica+One&display=swap");
+
 html,
 body {
   padding: 0;
@@ -15,8 +17,6 @@ a {
   box-sizing: border-box;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Erica+One&display=swap");
-
 .loginPage {
   width: max-content;
   padding: 8% 0 0;
@@ -25,25 +25,21 @@ a {
 
 .loginButtons {
   margin-top: 10vh;
+  text-align: center;
+  .row{
+      margin-top: 20px;
+  }
 }
 
 .loginHeader {
   display: block;
   h1 {
-    font-size: 5rem;
+    font-size: 8rem;
     color: rgb(0, 0, 0);
-    text-align: center;
     margin-bottom: 30px;
+    text-shadow: #7c7c7c 0 0 10px;
   }
-  h2 {
-    font-size: 1.5rem;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.5;
-    letter-spacing: normal;
-    color: #000000;
-  }
+
   text-align: center;
   font-family: "Erica One", cursive;
 }

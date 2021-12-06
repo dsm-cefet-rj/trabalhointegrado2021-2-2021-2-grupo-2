@@ -1,5 +1,4 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css"
 import Login from "../components/Login";
 
 
@@ -31,10 +30,10 @@ class Index extends React.Component {
 
         return (
             <div className="loginPage">
-                <div className="LoginHeader">
+                <div className="loginHeader">
                     <h1>Djan</h1>
-                    <h2>Login</h2>
                 </div>
+                <h2>Login</h2>
                     <Login/>
             </div>
         );
