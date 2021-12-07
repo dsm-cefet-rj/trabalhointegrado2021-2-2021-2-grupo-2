@@ -9,6 +9,10 @@
         function toggleMenu() {
             document.getElementById("menu").hidden = !document.getElementById("menu").hidden;
         }
+        function setname() {
+            let urlp = []; s = location.toString().split('?'); s = s[1].split('&'); for (i = 0; i < s.length; i++) { u = s[i].split('='); urlp[u[0]] = u[1]; }
+            document.getElementById("name").innerHTML = urlp['name'];
+        }
     </script>
 
     <style>
@@ -21,7 +25,8 @@
             padding: 20px;
             box-shadow: slategray 3px 3px 3px;
         }
-        .comment{
+
+        .comment {
             width: 70vw;
             margin-top: 20px;
             margin-bottom: 20px;
@@ -30,6 +35,7 @@
             padding: 20px;
             box-shadow: slategray 3px 3px 3px;
         }
+
         .post p {
             margin-top: 10px;
             margin-bottom: 10px;
@@ -86,7 +92,7 @@
     </style>
 </head>
 
-<body>
+<body onload="setname()">
 
     <div class="feedTitle">
         <h1>Feed</h1>
@@ -142,7 +148,7 @@
                                 alt="..." width="60px">
                         </div>
                         <div class=".col-6 .col-sm-3">
-                            <h2>@Dayvison</h2>
+                            <h2 id="name">@Dayvison</h2>
                         </div>
                     </div>
                     <div>
