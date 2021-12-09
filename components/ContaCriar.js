@@ -99,7 +99,7 @@ class CriarConta extends React.Component {
             this.setState({ erro: "Senhas não conferem" });
             return;
         }
-        fetch("/api/criar-conta", {
+        fetch("/api/conta", {
             method: "POST",
             body: JSON.stringify({
                 nome: this.state.nome,

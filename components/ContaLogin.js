@@ -47,11 +47,12 @@ class Login extends React.Component {
             [event.target.id]: event.target.value
         });
     }
+
     login = (event) => {
         event.preventDefault();
-        const { username, password } = this.state;
-        if (username && password) {
-            this.props.login(username, password);
+        const { email, password } = this.state;
+        if (email && password) {
+            this.props.login(email, password);
         } else {
             this.setState({
                 error: 'Preencha todos os campos'
