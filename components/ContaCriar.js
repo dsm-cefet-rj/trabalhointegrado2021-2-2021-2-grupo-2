@@ -99,11 +99,8 @@ class CriarConta extends React.Component {
             this.setState({ erro: "Senhas não conferem" });
             return;
         }
-        fetch("/api/criar-usuario", {
+        fetch("/api/criar-conta", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
             body: JSON.stringify({
                 nome: this.state.nome,
                 email: this.state.email,
@@ -114,7 +111,7 @@ class CriarConta extends React.Component {
                 if (response.status === 200) {
                     this.props.history.push("/");
                 } else {
-                    this.setState({ erro: "Email ou Nome já cadastrado" });
+                    this.setState({ erro: response.statusText });
                 }
             })
             .catch(error => {
