@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css"
-import CriarConta from "../components/CriarConta";
+import CriarConta from "../components/ContaCriar";
 
 class Criarconta extends React.Component {
     constructor(props) {

@@ -1,5 +1,5 @@
 import React from "react";
-import Login from "../components/Login";
+import Login from "../components/ContaLogin";
 
 
 class Index extends React.Component {
@@ -34,7 +34,7 @@ class Index extends React.Component {
                     <h1>Djan</h1>
                 </div>
                 <h2>Login</h2>
-                    <Login/>
+                <Login/>
             </div>
         );
 
