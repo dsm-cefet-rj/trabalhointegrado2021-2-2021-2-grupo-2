@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "nome": "Nicolas",
+    "email": "vycasnicolas@gmail.com",
+    "senha": "$2b$10$F0xCZfjHHZ/YeB.BqpO1r.tlkyXSmSrukWlofOjQ73qW2sCMekZ76",
+    "foto": "https://avatars0.githubusercontent.com/u/52709853",
+    "moderador": false,
+    "mensagens": [],
+    "propagandas": [],
+    "grupos": [],
+    "configuracao": { "corInterface": "white", "fonteInterface": "Roboto" }
+  }
+]
