@@ -12,6 +12,7 @@ class CriarConta extends React.Component {
             confirmarSenha: "",
             erro: "",
         };
+        this.handleChange = this.handleChange.bind(this);
     }
     render() {
         return (
@@ -23,10 +24,9 @@ class CriarConta extends React.Component {
                             type="text"
                             className="form-control"
                             id="nome"
-                            aria-describedby="nome"
                             placeholder="Nome"
                             value={this.state.nome}
-                            onChange={this.atualizarNome}
+                            onChange={this.handleChange}
                         />
                     </div>
                     <div className="form-group">
@@ -35,10 +35,9 @@ class CriarConta extends React.Component {
                             type="email"
                             className="form-control"
                             id="email"
-                            aria-describedby="email"
                             placeholder="Email"
                             value={this.state.email}
-                            onChange={this.atualizarEmail}
+                            onChange={this.handleChange}
                         />
                     </div>
                     <div className="form-group">
@@ -47,10 +46,9 @@ class CriarConta extends React.Component {
                             type="password"
                             className="form-control"
                             id="senha"
-                            aria-describedby="senha"
                             placeholder="Senha"
                             value={this.state.senha}
-                            onChange={this.atualizarSenha}
+                            onChange={this.handleChange}
                         />
                     </div>
                     <div className="form-group">
@@ -59,9 +57,8 @@ class CriarConta extends React.Component {
                             type="password"
                             className="form-control"
                             id="confirmarSenha"
-                            aria-describedby="confirmarSenha"
                             placeholder="Confirmar Senha"
-                            value={this.state.confirmarSenha}
+                            value={this.state.handleChange}
                             onChange={this.atualizarConfirmarSenha}
                         />
                     </div>
@@ -77,22 +74,14 @@ class CriarConta extends React.Component {
         );
     }
 
-    atualizarNome = event => {
-        this.setState({ nome: event.target.value });
-    };
+    // Função para atualizar o estado do componente
+    handleChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
 
-    atualizarEmail = event => {
-        this.setState({ email: event.target.value });
-    };
-
-    atualizarSenha = event => {
-        this.setState({ senha: event.target.value });
-    };
-
-    atualizarConfirmarSenha = event => {
-        this.setState({ confirmarSenha: event.target.value });
-    };
-
+    // Função para submeter o formulário
     criarConta = event => {
         event.preventDefault();
         if (this.state.senha !== this.state.confirmarSenha) {
