@@ -19,11 +19,25 @@ class Login extends React.Component {
                     <form onSubmit={this.login}>
                         <div className="form-group">
                             <label for="email">Email</label>
-                            <input type="email" className="form-control" id="email" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
+                            <input
+                                type="email"
+                                className="form-control"
+                                id="email"
+                                placeholder="Email"
+                                value={this.state.email}
+                                onChange={this.handleChange}
+                            />
                         </div>
                         <div className="form-group">
                             <label for="password">Password</label>
-                            <input type="password" className="form-control" id="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
+                            <input
+                                type="password"
+                                className="form-control"
+                                id="password"
+                                placeholder="Password"
+                                value={this.state.password}
+                                onChange={this.handleChange}
+                            />
                         </div>
                         <div className="loginError">
                             {this.state.error}
@@ -59,7 +73,7 @@ class Login extends React.Component {
             });
         }
     }
-    
+
 }
 
 export default Login;
