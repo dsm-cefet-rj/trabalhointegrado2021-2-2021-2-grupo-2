@@ -29,10 +29,9 @@ export default function handler(req, res) {
                             mensagens: [],
                             propagandas: [],
                             grupos: [],
-                            configuracao: Object.assign(new Configuracao(), {
-                                corInterface: "white",
-                                fonteInterface: "Roboto"
-                            })
+                            temaInterface: "white",
+                            fonteInterface: "Roboto"
+
                         });
                         let result = UsersDB.createUser(usuario)
                         if (result == -1) {
