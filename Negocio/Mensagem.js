@@ -1,9 +1,9 @@
 class Mensagem{
-    constructor(texto,data,usuario,pemiteComentario,corFundo,CorFonte,imagem){
+    constructor(texto,data,usuario,permiteComentario,corFundo,CorFonte,imagem){
         this.texto = texto;
         this.data = data;
         this.usuario = usuario;
-        this.pemiteComentario = pemiteComentario;
+        this.periteComentario = permiteComentario;
         this.corFundo = corFundo;
         this.CorFonte = CorFonte;
         this.imagem = imagem;
