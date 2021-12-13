@@ -4,7 +4,7 @@
 
 Uma rede social com mensagens temporárias e personalizadas.
 
-Integrantes: Andressa Dos Santos, Dayvison Augusto De Oliveira Da Costa, José Paulo Macedo, Nicolas Vycas Nery 
+Integrantes: Andressa Dos Santos, Dayvison Augusto De Oliveira Da Costa, José Paulo Macedo, Nicolas Vycas Nery
 
 ## Como modificar?
 
@@ -16,7 +16,19 @@ npm install
 
 ```
 
-Segundo, inicie o servidor de desenvolvimento:
+segundo, crie um arquivo `.env.local` com as seguintes variáveis:
+
+```ini
+
+DATABASE_URL={DATABASE_URL}
+DATABASE_NAME=psw-djan
+NEXTAUTH_URL=http://localhost:3000
+GITHUB_CLIENT_ID={GITHUB_CLIENT_ID}
+GITHUB_CLIENT_SECRET={GITHUB_CLIENT_SECRET}
+
+```
+
+Terceiro, inicie o servidor de desenvolvimento:
 
 ```bash
 
@@ -24,4 +36,4 @@ npm run dev
 
 ```
 
-Terceiro, abra o link [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado.
+Quarto, abra o link [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado.
