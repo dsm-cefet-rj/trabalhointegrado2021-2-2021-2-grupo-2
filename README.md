@@ -16,15 +16,15 @@ npm install
 
 ```
 
-segundo, crie um arquivo `.env.local` com as seguintes variáveis:
+Segundo, crie um arquivo `.env.local` com as seguintes variáveis:
 
 ```ini
 
-DATABASE_URL={DATABASE_URL}
+DATABASE_URL=
 DATABASE_NAME=psw-djan
 NEXTAUTH_URL=http://localhost:3000
-GITHUB_CLIENT_ID={GITHUB_CLIENT_ID}
-GITHUB_CLIENT_SECRET={GITHUB_CLIENT_SECRET}
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
 
 ```
 
