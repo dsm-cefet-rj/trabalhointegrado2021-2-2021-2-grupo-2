@@ -2,9 +2,9 @@ import Configuracao from "./Configuracao";
 
 class Usuario {
     constructor(id, nome, email, senha, foto, moderador, mensagens, propagandas,
-        grupos, temaInterface, fonteInterface) {
+        grupos, temaInterface, fonteInterface, dataCriacao) {
 
-        this.id = id;
+        this._id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -15,6 +15,7 @@ class Usuario {
         this.grupos = grupos;
         this.temaInterface = temaInterface;
         this.fonteInterface = fonteInterface;
+        this.dataCriacao = dataCriacao;
     }
 }
 
