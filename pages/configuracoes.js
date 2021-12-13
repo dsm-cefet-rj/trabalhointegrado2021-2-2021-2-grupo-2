@@ -1,120 +1,102 @@
+import { useSession } from "next-auth/react"
+import DefaultLayout from "../components/DefaultLayout";
 import { Dropdown } from "react-bootstrap";
-import { message } from "statuses";
+import React from "react";
+import style from "../styles/configuracoes.module.scss"
 
-class configuracoes extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            usuario: props.usuario,
-            message: '',
-        };
+const configuracoes = () => {
+    const { data: session } = useSession()
+    const [interfaceTema = "light", setInterfaceTema] = React.useState("light")
+    const [interfaceFonte = "roboto", setInterfaceFonte] = React.useState("14px")
+    const [mensagem, setMensagem] = React.useState("")
+
+    const alterarTema = (event) => {
+        setInterfaceTema(event.target.value)
     }
 
-    render() {
-        return (
-            <div className="ConfigPage">
-                <div className="ConfigHeader">
-
-                    <h1>Configurações</h1>
-
-                    <img src={this.setState.usuario.foto} alt="Foto Usuario" className="ConfigeHeader-logo" />
-                </div>
-                <form className="ConfigBody">
-                    <div className="form-group">
-                        <label htmlFor="nome">Nome</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="nome"
-                            placeholder="Nome"
-                            value={this.state.usuario.nome}
-                            onChange={this.atualizarNome}
-                        />
-                    </div>
-                    <div className="ConfigButtons">
-                        <Link href="/alterar-senha" className="btn btn-primary">Alterar Senha</Link>
-                        <Link href="/excluir-conta" className="btn btn-primary">Excluir Conta</Link>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="cor-interface">Cor Interface</label>
-                        <Dropdown>
-                            <Dropdown.Toggle
-                                variant="secondary"
-                                id="dropdown-cor-interface">
-                                {this.state.usuario.interfaceTema}
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu variant="dark">
-                                <Dropdown.Item>Action</Dropdown.Item>
-                                <Dropdown.Item>Action</Dropdown.Item>
-                                <Dropdown.Item>Action</Dropdown.Item>
-                                <Dropdown.Item>Action</Dropdown.Item>
-                                <Dropdown.Item>Action</Dropdown.Item>
-                                <Dropdown.Item>Action</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="fonte-interface">Fonte Interface</label>
-                        <Dropdown>
-                            <Dropdown.Toggle
-                                variant="secondary"
-                                id="dropdown-cor-interface">
-                                {this.state.usuario.interfaceFonte}
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu variant="dark">
-                                <Dropdown.Item>Action</Dropdown.Item>
-                                <Dropdown.Item>Action</Dropdown.Item>
-                                <Dropdown.Item>Action</Dropdown.Item>
-                                <Dropdown.Item>Action</Dropdown.Item>
-                                <Dropdown.Item>Action</Dropdown.Item>
-                                <Dropdown.Item>Action</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </div>
-                    <div className="form-group">
-                        <p>{this.state.mensagem}</p>
-                    </div>
-                    <div className="ConfigButtons">
-                        <button type="submit" className="btn btn-primary" onClick={this.handleClickSalvar} >Salvar</button>
-                        <button type="submit" className="btn btn-primary" onClick={this.handleClickCancelar}>Cancelar</button>
-                    </div>
-                </form>
-            </div>
-        );
+    const alterarFonte = (event) => {
+        setInterfaceFonte(event.target.value)
     }
 
-    handleClickSalvar = (event) => {
-        event.preventDefault();
-        fetch('/api/alterar-configuracoes' + this.state.usuario.id, {
-            method: 'PUT',
+    const handleClickSalvar = async (event) => {
+        const response = await fetch("/api/usuario", {
+            method: "PUT",
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                nome: this.state.usuario.nome,
-                interfaceTema: this.state.usuario.interfaceTema,
-                interfaceFonte: this.state.usuario.interfaceFonte,
+                temaInterface: interfaceTema,
+                fonteInterface: interfaceFonte
             })
-        })
-            .then(response => response.json())
-            .then(data => {
-                this.setState({
-                    usuario: data,
-                    message: 'Alterado com sucesso!'
-                });
+        }).then(res => {
+            if (res.ok) {
+                setMensagem("Alterações salvas com sucesso")
             }
-            );
+            throw new Error("Não foi possivel salvar as alterações")
+        }).catch(err => {
+            setMensagem("Não foi possivel salvar as alterações")
+        })
     }
 
-    handleClickCancelar = (event) => {
-        event.preventDefault();
-        this.setState({
-            mensagem: '',
-        });
-    }
-
-    atualizarNome = (event) => {
-        this.setState({ usuario: { ...this.state.usuario, nome: event.target.value } });
-    }
+    return (
+        <>
+            {session ? (
+                <DefaultLayout>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-12">
+                                <h1 className={style.configTitle}>Configurações</h1>
+                            </div>
+                        </div>
+                        <div>
+                            <img className={style.image} src={session.user.image} alt="Foto Usuario" />
+                        </div>
+                        <div className="row">
+                            <div className={style.userInfo}>
+                                <h2>{session.user.name}</h2>
+                                <h3>{session.user.email}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="container">
+                        <div className={style.userInfo}>
+                            <a href="/excluir-conta" className="btn btn-danger btn-lg">Excluir Conta</a>
+                        </div>
+                    </div>
+                    <form className="container">
+                        <div className="form-group">
+                            <label htmlFor="cor-interface">Cor Interface</label>
+                            <select className="form-select" onChange={alterarTema}>
+                                <option value="">light</option>
+                                <option value="">dark</option>
+                            </select>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="fonte-interface">Fonte Interface</label>
+                            <select className="form-select" onChange={alterarFonte}>
+                                <option value="roboto">Roboto</option>
+                                <option value="roboto-condensed">Roboto Condensed</option>
+                                <option value="roboto-mono">Roboto Mono</option>
+                                <option value="roboto-slab">Roboto Slab</option>
+                            </select>
+                        </div>
+                        <div className="form-group">
+                            <p>{mensagem}</p>
+                        </div>
+                    </form>
+                    <div className={style.ConfigButtons}>
+                        <button className="btn btn-success btn-lg" onClick={handleClickSalvar} >Salvar</button>
+                        <a href='/' className="btn btn-warning btn-lg">Cancelar</a>
+                    </div>
+                </DefaultLayout>
+            ) : (
+                <>
+                    <h1>E necessario esta logado para ver essa pagina</h1>
+                    <a href="/">Login</a>
+                </>
+            )}
+        </>
+    )
 }
+
+export default configuracoes;
