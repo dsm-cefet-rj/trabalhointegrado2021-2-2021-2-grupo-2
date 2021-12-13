@@ -1,83 +1,41 @@
-import Button from "@restart/ui/esm/Button";
 import React from "react";
+import style from "../styles/Mensagem.module.scss";
 
-//Mensagem que aparece no feed
-class Mensagem extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            id: "",
-            texto: "",
-            data: "",
-            fotoUsuario: "",
-            nomeUsuario: "",
-            periteComentario: false,
-            CorFonte: "",
-            corFundo: "",
-            imagem: "",
-        };
-    }
-
-    sendDenuncia() {
-        //TODO: Enviar denuncia
-    }
-
-    componentDidMount() {
-        this.setState({
-            id: this.props.id,
-            texto: this.props.texto,
-            data: this.props.data,
-            fotoUsuario: this.props.fotoUsuario,
-            nomeUsuario: this.props.nomeUsuario,
-            periteComentario: this.props.periteComentario,
-            CorFonte: this.props.CorFonte,
-            corFundo: this.props.corFundo,
-            imagem: this.props.imagem,
+export default ({ Mensagem }) => {
+    const sendDenuncia = () => {
+        fetch("api/denuncia", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                id_user: Mensagem.usuario._id,
+            }),
+        }).then(res => {
+            console.log(res);
         });
     }
 
-    render() {
-        return (
-            <div className="container">
-                <div className="foto-perfil">
-                    <img src={this.state.fotoUsuario} alt="foto de perfil" />
-                </div>
-                <div className="nome">
-                    <p>{this.state.nomeUsuario}</p>
-                </div>
-                {
-                    this.state.texto != '' ?
-                        <div className="texto-mensagem">
-                            <p className="texto-mensagem">{this.state.texto}</p>
-                            <p className="data-mensagem">{this.state.data}</p>
-                        </div>
-                        :
-                        {}
-                }
-                {
-                    this.state.imagem != '' ?
-                        <div className="imagem-mensagem">
-                            <img src={this.state.imagem} alt="imagem da mensagem" />
-                        </div>
-                        :
-                        {}
-                }
-                <div className="data-mensagem">
-                    <p className="data-mensagem">{this.state.data}</p>
-                </div>
-                <div class="d-grid gap-2">
-                    {
-                        this.state.periteComentario ?
-                            <a href="#">Comentar</a>
-                            :
-                            {}
-                    }
-                    <Button variant="danger" onClick={this.sendDenuncia}>Denunciar</Button>
-                </div>
-            </div >
-        );
-    }
-
+    return (
+        <div className={style.mensagem}>
+            <div className={style.mensagemHeaderLeft}>
+                <img className={style.userImage} src={Mensagem.usuario.image} alt="Imagem do usuário" />
+                <h4 className={style.userName} >{Mensagem.usuario.name}</h4>
+            </div>
+            <div className={style.mensagemBody}>
+                <p>{Mensagem.texto}</p>
+                {Mensagem.image ? <img className={style.image} src={Mensagem.image} alt="Imagem da mensagem" /> : null}
+            </div>
+            <div className={style.mensagemFooter}>
+                <a className="btn btn-link" href={`/perfil/${Mensagem.usuario._id}`}>Ver perfil</a>
+                {Mensagem.permiteComentarios ? (
+                    <a className="btn btn-info" href={`/mensagens/${Mensagem.usuario._id}/${0}`}>Comentar</a>
+                ) : (
+                    <></>
+                )}
+                <button className="btn btn-danger" onClick={sendDenuncia}>Denunciar</button>
+            </div>
+        </div>
+    );
 }
 
-export default Mensagem;
