@@ -17,36 +17,4 @@ a {
   box-sizing: border-box;
 }
 
-.loginPage {
-  width: max-content;
-  margin: auto;
-}
-
-.loginButtons {
-  margin-top: 10vh;
-  text-align: center;
-  .row{
-      margin-top: 20px;
-  }
-}
-
-.loginHeader {
-  display: block;
-  h1 {
-    font-size: 8rem;
-    color: rgb(0, 0, 0);
-    margin-bottom: 30px;
-    text-shadow: #7c7c7c 0 0 10px;
-  }
-
-  text-align: center;
-  font-family: "Erica One", cursive;
-}
-
-.profileMinPicture {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #fff;
-}
 

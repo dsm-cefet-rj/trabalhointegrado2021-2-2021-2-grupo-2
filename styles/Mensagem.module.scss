@@ -1,0 +1,47 @@
+.mensagem {
+  width: 80vw;
+  height: auto;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #7c7c7c;
+}
+.userImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  margin-right: 10px;
+}
+.userName {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.mensagemHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mensagemBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: justify;
+}
+
+.mensagemFooter {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}

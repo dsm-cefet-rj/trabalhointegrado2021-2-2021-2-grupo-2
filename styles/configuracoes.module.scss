@@ -1,0 +1,36 @@
+.configTitle{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.image{
+    width: 50%;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    margin-top: -1rem;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.userInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+.ConfigBody{
+    margin-top: 50vh;
+}
+.ConfigButtons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    *{
+        width: 45%;
+    }
+}
