@@ -1,44 +1,24 @@
 import React from "react";
+import DefaultLayout from "./DefaultLayout";
 
 // Componente de mensagem de nova mensagem
-class NovaMensagemForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            texto: "",
-            permiteComentario: false,
-            corFundo: "",
-            corFonte: "",
-            imagem: ""
-        }
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+const NovaMensagemForm = ({ onSubmit }) => {
+
+
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setForm({ ...form, [name]: value });
     }
 
-    // Função para atualizar o estado do componente
-    handleChange(event) {
-        this.setState({
-            [event.target.name]: event.target.value
-        })
-    }
-
-    // Função para submeter o formulário
-    handleSubmit(event) {
+    handleSubmit = (event) => {
         event.preventDefault();
-        this.props.novaMensagem(this.state);
-        this.setState({
-            texto: "",
-            permiteComentario: false,
-            corFundo: "",
-            corFonte: "",
-            imagem: ""
-        })
     }
 
-    render() {
-        return (
+    return (
+        <DefaultLayout>
             <div className="container">
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="texto">Texto</label>
                         <input
@@ -46,8 +26,7 @@ class NovaMensagemForm extends React.Component {
                             className="form-control"
                             id="texto"
                             name="texto"
-                            value={this.state.texto}
-                            onChange={this.handleChange}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="form-group">
@@ -57,8 +36,7 @@ class NovaMensagemForm extends React.Component {
                             className="form-control"
                             id="permiteComentario"
                             name="permiteComentario"
-                            checked={this.state.permiteComentario}
-                            onChange={this.handleChange}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="form-group">
@@ -68,8 +46,7 @@ class NovaMensagemForm extends React.Component {
                             className="form-control"
                             id="corFundo"
                             name="corFundo"
-                            value={this.state.corFundo}
-                            onChange={this.handleChange}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="form-group">
@@ -79,8 +56,7 @@ class NovaMensagemForm extends React.Component {
                             className="form-control"
                             id="corFonte"
                             name="corFonte"
-                            value={this.state.corFonte}
-                            onChange={this.handleChange}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="form-group">
@@ -90,8 +66,7 @@ class NovaMensagemForm extends React.Component {
                             className="form-control"
                             id="imagem"
                             name="imagem"
-                            value={this.state.imagem}
-                            onChange={this.handleChange}
+                            onChange={handleChange}
                         />
                     </div>
                     <button
@@ -100,9 +75,8 @@ class NovaMensagemForm extends React.Component {
                     >Enviar</button>
                 </form>
             </div>
-        );
-    }
+        </DefaultLayout>
+    );
 }
 
 export default NovaMensagemForm;
-
