@@ -1,0 +1,26 @@
+.userProfileImage {
+  width: 80vw;
+  height: auto;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.userProfileName {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.userProfileButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.userProfileMessages {
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}

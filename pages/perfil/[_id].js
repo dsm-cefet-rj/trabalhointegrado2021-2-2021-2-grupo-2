@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react"
 import React, { useEffect } from "react";
 import DefaultLayout from '../../components/DefaultLayout';
 import Mensagem from "../../components/Mensagem";
+import style from "../../styles/[_id].module.scss";
 
 export default function PerfilPage() {
     const { data: session } = useSession()
@@ -33,23 +34,23 @@ export default function PerfilPage() {
                 <DefaultLayout>
                     {userData ? (
                         <>
-                            <div className="userProfile">
-                                <div className="userProfile__header">
-                                    <img className="userProfileHeader" src={userData.image} alt="Imagem do usuário" />
-                                    <h4 className="userProfileName" >{userData.name}</h4>
+                            <div className="container">
+                                <div>
+                                    <img className={style.userProfileImage} src={userData.image} alt="Imagem do usuário" />
+                                    <h4 className={style.userProfileName} >{userData.name}</h4>
                                 </div>
                             </div>
-                            <div className="userProfileButtons">
+                            <div className={style.userProfileButtons}>
                                 {(
                                     userData._id !== session.user._id) ? (<>
                                         <button>Seguir</button><button>Denunciar</button>
                                     </>) : (<>
-                                        <a>Quem estou seguindo</a>
+                                        <a className='btn btn-link'  href='/'>Quem estou seguindo</a>
                                     </>
                                 )}
                             </div>
                             <p>{error}</p>
-                            <div className="userProfileMessages">
+                            <div className="container">
                                 {userData.mensagens ? (
                                     userData.mensagens.length > 0 ?
                                         userData.mensagens.map(message => {
