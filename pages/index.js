@@ -13,7 +13,7 @@ export default function Index() {
 
     useEffect(async () => {
         if (session) {
-            const response = await fetch("api/feed", {
+            await fetch("api/feed", {
                 method: "GET",
             }).then(res => {
                 if (res.ok) {
