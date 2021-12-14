@@ -39,7 +39,7 @@ export default function Index() {
                             {messagesData ?
                                 messagesData.map(message => {
                                     return (
-                                        <Mensagem key={message._id} Mensagem={message} />
+                                        <Mensagem Mensagem={message} Self_Id={session.user._id} />
                                     )
                                 }) : (
                                     <div className={style.finalMessage}>

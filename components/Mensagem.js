@@ -1,7 +1,7 @@
 import React from "react";
 import style from "../styles/Mensagem.module.scss";
 
-export default ({ Mensagem }) => {
+export default ({ Mensagem, Self_Id }) => {
     const sendDenuncia = () => {
         fetch("api/denuncia", {
             method: "POST",
@@ -33,7 +33,14 @@ export default ({ Mensagem }) => {
                 ) : (
                     <></>
                 )}
-                <button className="btn btn-danger" onClick={sendDenuncia}>Denunciar</button>
+                {Self_Id === Mensagem.usuario._id ? (
+                    <>
+                    </>
+                ) : (
+                    <button className="btn btn-danger" onClick={sendDenuncia}>Denunciar</button>
+                )}
+
+
             </div>
         </div>
     );

@@ -2,8 +2,9 @@ import { useRouter } from 'next/router';
 import { useSession } from "next-auth/react"
 import React, { useEffect } from "react";
 import DefaultLayout from '../../components/DefaultLayout';
+import Mensagem from "../../components/Mensagem";
 
-export default function PerfilPage({ user }) {
+export default function PerfilPage() {
     const { data: session } = useSession()
     const router = useRouter();
     const { _id } = router.query;
@@ -20,7 +21,6 @@ export default function PerfilPage({ user }) {
                 }
                 throw new Error("Não foi possivel obter as mensagens")
             }).then(data => {
-                console.log(data);
                 setUserData(data)
             }).catch(err => {
                 setError(err.message)
@@ -31,29 +31,49 @@ export default function PerfilPage({ user }) {
         <>
             {session ? (<>
                 <DefaultLayout>
-                    <div className="userProfile">
-                        <div className="userProfile__header">
-                            <img className="userProfileHeader" src={userData.image} alt="Imagem do usuário" />
-                            <h4 className="userProfileName" >{userData.name}</h4>
+                    {userData ? (
+                        <>
+                            <div className="userProfile">
+                                <div className="userProfile__header">
+                                    <img className="userProfileHeader" src={userData.image} alt="Imagem do usuário" />
+                                    <h4 className="userProfileName" >{userData.name}</h4>
+                                </div>
+                            </div>
+                            <div className="userProfileButtons">
+                                {(
+                                    userData._id !== session.user._id) ? (<>
+                                        <button>Seguir</button><button>Denunciar</button>
+                                    </>) : (<>
+                                        <a>Quem estou seguindo</a>
+                                    </>
+                                )}
+                            </div>
+                            <p>{error}</p>
+                            <div className="userProfileMessages">
+                                {userData.mensagens ? (
+                                    userData.mensagens.length > 0 ?
+                                        userData.mensagens.map(message => {
+                                            return (
+                                                <Mensagem Mensagem={message} Self_Id={session.user._id} />
+                                            )
+                                        }) : (
+                                            <p>O usuario não possui mensagens </p>
+                                        )
+                                ) : (
+                                    <>
+                                        <div className='finalMessage'>
+                                            <h2>Carregando</h2>
+                                        </div>
+                                    </>
+                                )}
+                            </div>
+                        </>
+                    ) : (<>
+
+                        <div className='finalMessage'>
+                            <h2>Carregando</h2>
                         </div>
-                    </div>
-                    <div className="userProfileButtons">
-                        {(
-                            userData._id !== session.user._id) ? (<>
-                                <button>Seguir</button><button>Denunciar</button>
-                            </>) : (<>
-                                <a>Quem estou seguindo</a>
-                            </>
-                        )}
-                    </div>
-                    <div className="userProfileMessages">
-                                    
-                    </div>
-
-
-                    <p>usuario _id: {_id}</p>
-                    <p>Data: {JSON.stringify(userData)}</p>
-                    <p>{error}</p>
+                    </>)}
                 </DefaultLayout>
             </>
             ) : (
