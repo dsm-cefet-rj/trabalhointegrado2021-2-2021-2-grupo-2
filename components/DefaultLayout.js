@@ -31,8 +31,15 @@ const DefaultLayout = ({ children }) => {
                 <div>
                     <a href={`/perfil/${session.user._id}`}>Meu Perfil</a>
                 </div>
-                <button>Grupos</button>
-                <a href="/seguindo">Quem Estou Seguindo</a>
+                <div>
+                    <a href="/criar-grupo">Grupos</a>
+                </div>
+                <div>
+                    <a href="/criar-propaganda">Propagandas</a>
+                </div>
+                <div>
+                    <a href="/seguindo">Quem Estou Seguindo</a>
+                </div>
                 <div>
                     <Link href="/configuracoes">Configurações</Link>
                 </div>
