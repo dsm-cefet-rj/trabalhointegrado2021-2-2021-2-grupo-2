@@ -6,7 +6,7 @@ import Mensagem from "../../components/Mensagem";
 import style from "../../styles/[_id].module.scss";
 
 export default function PerfilPage() {
-    const { data: session } = useSession()
+    const { data: session } = useSession();
     const router = useRouter();
     const { _id } = router.query;
     const [userData, setUserData] = React.useState({});
@@ -45,7 +45,7 @@ export default function PerfilPage() {
                                     userData._id !== session.user._id) ? (<>
                                         <button>Seguir</button><button>Denunciar</button>
                                     </>) : (<>
-                                        <a className='btn btn-link'  href='/'>Quem estou seguindo</a>
+                                        <a className='btn btn-link' href='/'>Quem estou seguindo</a>
                                     </>
                                 )}
                             </div>

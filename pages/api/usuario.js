@@ -20,24 +20,7 @@ export default async (req, res) => {
         console.log(dbResp);
         res.status(200).end();
         return;
-    } else if (req.method === "GET") {
-        if (req.body.id) {
-            const { db } = await connect()
-            const id = ObjectId(req.body.id);
-            const usuario = await db.collection("users").findOne({ _id: id });
-            res.status(200).json(usuario);
-            return;
-        }
-        if (req.body.name) {
-            const { db } = await connect()
-            const name = req.body.name;
-            const usuarios = await db.collection("users").find({ name: name });
-            res.status(200).json(usuarios);
-            return;
-        }
-        res.status(400).end();
-        return;
-    } if (req.method === "DELETE") {
+    } else if (req.method === "DELETE") {
         const { db } = await connect()
         const id = new ObjectId(session.session.user._id);
         await db.collection("users").deleteOne({ _id: id });

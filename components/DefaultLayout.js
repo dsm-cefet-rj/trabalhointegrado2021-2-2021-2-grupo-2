@@ -32,7 +32,7 @@ const DefaultLayout = ({ children }) => {
                     <a href={`/perfil/${session.user._id}`}>Meu Perfil</a>
                 </div>
                 <button>Grupos</button>
-                <button>Quem Estou Seguindo</button>
+                <a href="/seguindo">Quem Estou Seguindo</a>
                 <div>
                     <Link href="/configuracoes">Configurações</Link>
                 </div>
