@@ -4,9 +4,6 @@ import { useSession } from "next-auth/react"
 
 // Componente de mensagem de nova mensagem
 const NovaMensagemForm = () => {
-
-
-
     const { data: session } = useSession()
     if (session) {
         const [texto, setTexto] = React.useState("");
