@@ -159,7 +159,7 @@ const NovaMensagemForm = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
-                            <h1>Nova mensagem</h1>
+                            <h1 className="text-muted text-center">Nova mensagem</h1>
                         </div>
                     </div>
                     <div className="row" id='erro'>

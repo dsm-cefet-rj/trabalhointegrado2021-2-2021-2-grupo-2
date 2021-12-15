@@ -32,21 +32,31 @@ const CriarPropaganda = () => {
                 session ? (
                     <>
                         <DefaultLayout>
-                            <h1>Criação de propaganda</h1>
+                            <div className="col-12">
+                                <h1 className="text-muted text-center">Criação de propaganda</h1>
+                            </div>
                             <form action="/api/propagandas" method="post" enctype="multipart/form-data">
-                                <div className="form-group">
-                                    <label htmlFor="imagem">Imagem</label>
-                                    <input type="file" name="imagem" id="imagem" value={imagem} onChange={handleChange} />
+                                <div className="p-3 row">
+                                    <div className="form-group">
+                                        <label htmlFor="imagem">Imagem</label>
+                                        <input type="file" name="imagem" id="imagem" value={imagem} onChange={handleChange} />
+                                    </div>
                                 </div>
-                                <div className="form-group">
-                                    <label htmlFor="link">Link</label>
-                                    <input type="text" name="link" id="link" value={link} onChange={handleChange} />
+                                <div className="p-3 row">
+                                    <div className="form-group">
+                                        <label htmlFor="link">Link</label>
+                                        <input type="text" name="link" id="link" value={link} onChange={handleChange} />
+                                    </div>
                                 </div>
-                                <div className="form-group">
-                                    <label htmlFor="duracao">Duração</label>
-                                    <input type="text" name="duracao" id="duracao" value={duracao} onChange={handleChange} />
+                                <div className="p-3 row">
+                                    <div className="form-group">
+                                        <label htmlFor="duracao">Duração</label>
+                                        <input type="text" name="duracao" id="duracao" value={duracao} onChange={handleChange} />
+                                    </div>
                                 </div>
-                                <button type="submit">Pagamento</button>
+                                <div className="p-1 row">
+                                    <button className="btn btn-success" type="submit">Pagamento</button>
+                                </div>
                             </form>
                         </DefaultLayout>
                     </>

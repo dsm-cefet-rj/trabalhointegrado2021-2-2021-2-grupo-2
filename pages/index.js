@@ -34,7 +34,7 @@ export default function Index() {
                 session ? (
                     <DefaultLayout>
                         <div className={style.feedContainer}>
-                            <h1>Feed</h1>
+                            <h1 className="text-muted text-center">Feed</h1>
                             {error && <p>{error.message}</p>}
                             {messagesData ?
                                 messagesData.map(message => {
@@ -47,7 +47,7 @@ export default function Index() {
                                     </div>
                                 )}
                             <div className={style.finalMessage}>
-                                <h2>Fim das mensagens</h2>
+                                <h2 className="text-muted text-center">Fim das mensagens</h2>
                             </div>
                         </div>
                     </DefaultLayout>

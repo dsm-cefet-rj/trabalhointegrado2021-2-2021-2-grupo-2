@@ -45,7 +45,7 @@ const configuracoes = () => {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12">
-                                <h1 className={style.configTitle}>Configurações</h1>
+                                <h1 className="text-muted text-center">Configurações</h1>
                             </div>
                         </div>
                         <div>

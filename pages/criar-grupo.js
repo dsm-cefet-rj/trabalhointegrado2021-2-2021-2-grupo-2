@@ -31,23 +31,34 @@ const CriarGrupo = () => {
                 session ? (
                     <>
                         <DefaultLayout>
-                            <h1>Criação de Grupo</h1>
-                            <form action="/api/grupos" method="post" enctype="multipart/form-data">
-                                <div className="form-group">
-                                    <label htmlFor="name">Nome</label>
-                                    <input type="text" name="name" id="name" value={name} onChange={handleChange} />
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="description">Descrição</label>
-                                    <input type="text" name="description" id="description" value={description} onChange={handleChange} />
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="imagem">Imagem</label>
-                                    <input type="file" name="imagem" id="imagem" value={imagem} onChange={handleChange} />
-                                </div>
-                                
-                                <button type="submit">Criar Grupo</button>
-                            </form>
+                            <div className="col-12">
+                                <h1 className="text-muted text-center">Criação de Grupo</h1>
+                            </div>
+                            <div className="container">
+                                <form action="/api/grupos" method="post" enctype="multipart/form-data">
+                                    <div className="p-3 row">
+                                        <div className="form-group">
+                                            <label htmlFor="name">Nome</label>
+                                            <input type="text" name="name" id="name" value={name} onChange={handleChange} />
+                                        </div>
+                                    </div>
+                                    <div className="p-3 row">
+                                        <div className="form-group">
+                                            <label htmlFor="description">Descrição</label>
+                                            <input type="text" name="description" id="description" value={description} onChange={handleChange} />
+                                        </div>
+                                    </div>
+                                    <div className="p-3 row">
+                                        <div className="form-group">
+                                            <label htmlFor="imagem">Imagem</label>
+                                            <input type="file" name="imagem" id="imagem" value={imagem} onChange={handleChange} />
+                                        </div>
+                                    </div>
+                                    <div className="p-3 row">
+                                        <button className="btn btn-success" type="submit">Criar Grupo</button>
+                                    </div>
+                                </form>
+                            </div>
                         </DefaultLayout>
                     </>
 
