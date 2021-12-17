@@ -29,7 +29,7 @@ export default ({ Mensagem, Self_Id }) => {
             <div className={style.mensagemFooter}>
                 <a className="btn btn-link" href={`/perfil/${Mensagem.usuario._id}`}>Ver perfil</a>
                 {Mensagem.permiteComentarios ? (
-                    <a className="btn btn-info" href={`/mensagens/${Mensagem.usuario._id}/${0}`}>Comentar</a>
+                    <a className="btn btn-info" href={`/mensagens/${Mensagem.usuario._id}/${0}`}>Detalhes</a>
                 ) : (
                     <></>
                 )}
