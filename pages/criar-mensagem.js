@@ -48,7 +48,8 @@ const NovaMensagemForm = () => {
                     // Verifica se a mensagem foi enviada com sucesso
                     if (response.ok) {
                         // Redireciona para a página de mensagens
-                        window.location.href = "/mensagens"
+                        window.location.href = "/"
+                        console.log("Mensagem enviada com sucesso!")
                     } else {
                         // Exibe mensagem de erro
                         erroChange("Não foi possível enviar a mensagem")
@@ -70,7 +71,8 @@ const NovaMensagemForm = () => {
                     // Verifica se a mensagem foi enviada com sucesso
                     if (response.ok) {
                         // Redireciona para a página de mensagens
-                        //window.location.href = "/mensagens"
+                        window.location.href = "/"
+                        console.log("Mensagem enviada com sucesso!")
                     } else {
                         // Exibe mensagem de erro
                         erroChange("Não foi possível enviar a mensagem")
@@ -81,7 +83,7 @@ const NovaMensagemForm = () => {
                 erroChange("Digite um texto para a mensagem")
             }
         };
-
+        
         // Função para selecionar a imagem
         const selecionarImagem = async (event) => {
             // Verifica se o usuário selecionou uma imagem
