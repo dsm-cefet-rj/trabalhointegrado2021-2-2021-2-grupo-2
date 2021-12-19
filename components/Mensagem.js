@@ -1,7 +1,7 @@
 import React from "react";
 import style from "../styles/Mensagem.module.scss";
 
-export default ({ Mensagem, Self_Id }) => {
+export default ({ Mensagem, UserId, key }) => {    
     const sendDenuncia = () => {
         fetch("api/denuncia", {
             method: "POST",
@@ -17,7 +17,10 @@ export default ({ Mensagem, Self_Id }) => {
     }
 
     return (
-        <div className={style.mensagem}>
+        <div className={style.mensagem} style={{
+            backgroundColor: Mensagem.corFundo,
+            color: Mensagem.corFonte,
+        }}>
             <div className={style.mensagemHeaderLeft}>
                 <img className={style.userImage} src={Mensagem.usuario.image} alt="Imagem do usuário" />
                 <h4 className={style.userName} >{Mensagem.usuario.name}</h4>
@@ -33,7 +36,7 @@ export default ({ Mensagem, Self_Id }) => {
                 ) : (
                     <></>
                 )}
-                {Self_Id === Mensagem.usuario._id ? (
+                {UserId === Mensagem.usuario._id ? (
                     <>
                     </>
                 ) : (
@@ -45,4 +48,3 @@ export default ({ Mensagem, Self_Id }) => {
         </div>
     );
 }
-
