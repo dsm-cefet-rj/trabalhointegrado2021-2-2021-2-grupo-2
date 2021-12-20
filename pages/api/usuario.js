@@ -8,8 +8,7 @@ export default async (req, res) => {
         res.statusCode = 401;
         res.end();
         return;
-    }
-    if (req.method === "PUT") {
+    } else if (req.method === "PUT") {
         const data = await req.body;
         const id = new ObjectId(session.session.user._id);
 

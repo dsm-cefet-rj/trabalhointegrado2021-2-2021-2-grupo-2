@@ -12,9 +12,11 @@ export default async (req, res) => {
     } else {
         const { db } = await connect();
         const usuario = await db.collection("users").findOne({ _id: new ObjectId(_id) });
+        const mensagens = await db.collection("mensagens").find({ user_id: new ObjectId(_id) }).toArray();
 
 
-        for (let i = 0; i < usuario.mensagens.length; i++) {
+
+        for (let i = 0; i < mensagens.length; i++) {
             const usuarioCopy = JSON.parse(JSON.stringify(usuario));
 
             delete usuarioCopy.mensagens;
@@ -29,12 +31,12 @@ export default async (req, res) => {
 
             usuario.mensagens[i].usuario = usuarioCopy;
         }
-
-        usuario.mensagens.sort((a, b) => {
+        mensagens.sort((a, b) => {
             return new Date(b.data) - new Date(a.data)
-        });
+        })
 
-
+        usuario.mensagens = mensagens;
+        
         res.status(200).json(usuario);
         return;
     }

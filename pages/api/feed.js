@@ -9,22 +9,24 @@ export default async (req, res) => {
         res.statusCode = 405;
         res.end();
         return;
-    } else if (!session.session.user) {
-        res.statusCode = 401;
-        res.end();
-        return;
-    } else {
+    } else if (session.session.user) {
         let _idUsuariosSeguidos = [ObjectId(session.session.user._id)]
+
         session.user.seguindo.forEach(id => {
             _idUsuariosSeguidos.push(new ObjectId(id))
         });
 
         const { db } = await connect();
-        const usuarios = await db.collection("users").find({ _id: { $in: _idUsuariosSeguidos } }).toArray();
-        let messages = [];
 
+        // Pegar todos os usuários que o usuário está seguindo
+        let usuarios = await db.collection("users").find({ _id: { $in: _idUsuariosSeguidos } }).toArray();
+
+        // Pegar as mensagens de todos os usuarios que o usuario está seguindo
+        let messages = await db.collection("mensagens").find({ user_id: { $in: _idUsuariosSeguidos } }).sort({ date: -1 }).limit(25).toArray();
+
+        // Remover dados não necessários
         for (let i = 0; i < usuarios.length; i++) {
-            const usuario = JSON.parse(JSON.stringify(usuarios[i]));
+            let usuario = JSON.parse(JSON.stringify(usuarios[i]));
             delete usuario.mensagens;
             delete usuario.email;
             delete usuario.moderador;
@@ -33,17 +35,22 @@ export default async (req, res) => {
             delete usuario.grupos;
             delete usuario.temaInterface;
             delete usuario.fonteInterface;
-            delete usuario.dataCriacao;
-            for (let j = 0; j < usuarios[i].mensagens.length; j++) {
-                usuarios[i].mensagens[j].usuario = usuario;
-            }
-            messages = messages.concat(usuarios[i].mensagens);
+            delete usuario.dataCriacao;;
+            delete usuario.dataUltimoLogin;
+            usuarios[i] = usuario;
         }
 
-        messages.sort((a, b) => {
-            return new Date(b.data) - new Date(a.data)
+
+        // Adicionar dados dos usuários a cada mensagem
+        messages.forEach(message => {
+            message.usuario = usuarios.find(user => user._id.toString() === message.user_id.toString());
+
         });
 
         res.status(200).json(messages);
+    } else {
+        res.statusCode = 401;
+        res.end();
+        return;
     }
 }

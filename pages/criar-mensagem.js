@@ -83,7 +83,7 @@ const NovaMensagemForm = () => {
                 erroChange("Digite um texto para a mensagem")
             }
         };
-        
+
         // Função para selecionar a imagem
         const selecionarImagem = async (event) => {
             // Verifica se o usuário selecionou uma imagem
@@ -166,7 +166,9 @@ const NovaMensagemForm = () => {
                     </div>
                     <div className="row" id='erro'>
                         <div className="col-12">
-                            <div className="alert alert-danger" role="alert">
+                            <div className="alert alert-danger" role="alert" style={{
+                                display: erro ? "block" : "none"
+                            }}>
                                 {erro}
                             </div>
                         </div>

@@ -25,9 +25,6 @@ const Options = ({
                     image: session.session.user.image,
                     moderador: false,
                     seguindo: [],
-                    mensagens: [],
-                    propagandas: [],
-                    grupos: [],
                     temaInterface: "light",
                     fonteInterface: "roboto",
                     dataCriacao: new Date()
@@ -60,9 +57,6 @@ const Options = ({
                     image: user.image,
                     moderador: false,
                     seguindo: [],
-                    mensagens: [],
-                    propagandas: [],
-                    grupos: [],
                     temaInterface: "light",
                     fonteInterface: "roboto",
                     dataCriacao: new Date()
