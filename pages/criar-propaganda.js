@@ -60,9 +60,9 @@ const CriarPropaganda = () => {
                             <div className="row" id='erro'>
                                 <div className="col-12">
                                     <div className="alert alert-danger" role="alert" style={{
-                                        display: erro ? "block" : "none"
+                                        display: error ? "block" : "none"
                                     }}>
-                                        {erro}
+                                        {error}
                                     </div>
                                 </div>
                             </div>

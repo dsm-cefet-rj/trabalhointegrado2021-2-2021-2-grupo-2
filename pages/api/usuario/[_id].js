@@ -29,14 +29,15 @@ export default async (req, res) => {
             delete usuarioCopy.fonteInterface;
             delete usuarioCopy.dataCriacao;
 
-            usuario.mensagens[i].usuario = usuarioCopy;
+            mensagens[i].usuario = usuarioCopy;
         }
+        
         mensagens.sort((a, b) => {
             return new Date(b.data) - new Date(a.data)
         })
 
         usuario.mensagens = mensagens;
-        
+        console.log(usuario);
         res.status(200).json(usuario);
         return;
     }

@@ -61,9 +61,9 @@ const CriarGrupo = () => {
                                 <div className="row" id='erro'>
                                     <div className="col-12">
                                         <div className="alert alert-danger" role="alert" style={{
-                                            display: erro ? "block" : "none"
+                                            display: error ? "block" : "none"
                                         }}>
-                                            {erro}
+                                            {error}
                                         </div>
                                     </div>
                                 </div>
@@ -81,9 +81,11 @@ const CriarGrupo = () => {
                                         </div>
                                     </div>
                                     <div className="p-3 row">
-                                        <div className="form-group">
-                                            <label htmlFor="imagem">Imagem</label>
-                                            <input type="file" name="imagem" id="imagem" value={imagem} onChange={handleChange} />
+                                        <div class="input-group-prepend">
+                                            <span htmlFor="imagem">Imagem</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" className="custom-file-input" name="imagem" id="imagem" value={imagem} onChange={handleChange} />
                                         </div>
                                     </div>
                                     <div className="p-3 row">
@@ -96,7 +98,7 @@ const CriarGrupo = () => {
 
                 ) : (
                     <>
-                        <Carregando/>
+                        <Carregando />
                     </>
                 )
             }

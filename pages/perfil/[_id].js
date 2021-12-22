@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useSession } from "next-auth/react"
 import React, { useEffect } from "react";
 import DefaultLayout from '../../components/DefaultLayout';
-import DefaultLayout from "../components/Carregando";
+import Carregando from "../../components/Carregando";
 import Mensagem from "../../components/Mensagem";
 import style from "../../styles/[_id].module.scss";
 
@@ -23,7 +23,7 @@ export default function PerfilPage() {
                 }
                 throw new Error("Não foi possivel obter as mensagens")
             }).then(data => {
-                setUserData(data)
+                setUserData(data);
             }).catch(err => {
                 setError(err.message)
             }, [])

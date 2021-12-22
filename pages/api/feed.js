@@ -44,7 +44,6 @@ export default async (req, res) => {
         // Adicionar dados dos usuários a cada mensagem
         messages.forEach(message => {
             message.usuario = usuarios.find(user => user._id.toString() === message.user_id.toString());
-
         });
 
         res.status(200).json(messages);
