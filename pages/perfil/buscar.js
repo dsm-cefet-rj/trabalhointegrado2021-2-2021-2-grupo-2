@@ -14,8 +14,14 @@ export default function PerfilPage() {
 
     const handleBuscaActio = (e) => {
         e.preventDefault();
-        fetch(`/api/usuario/buscar?name=${busca}`, {
+        fetch(`/api/usuario/buscar`, {
             method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                busca
+            })
         }).then(res => {
             if (res.ok) {
                 return res.json()
@@ -27,23 +33,6 @@ export default function PerfilPage() {
             setError(err.message)
         }, [])
     }
-
-    useEffect(() => {
-        if (busca !== '') {
-            fetch(`/api/usuario/buscar/${busca}`, {
-                method: "GET",
-            }).then(res => {
-                if (res.ok) {
-                    return res.json()
-                }
-                throw new Error("Não foi possivel obter as mensagens")
-            }).then(data => {
-                setResultados(data)
-            }).catch(err => {
-                setError(err.message)
-            }, [])
-        }
-    })
 
     return (
         <>
