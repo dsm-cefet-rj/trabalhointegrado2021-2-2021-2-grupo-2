@@ -1,7 +1,5 @@
 import React from "react";
 import style from "../styles/Mensagem.module.scss";
-import like from '../public/like.png'; 
-import unlike from '../public/unlike.PNG'
 
 export default ({ Mensagem, UserId, key }) => {    
     const sendDenuncia = () => {
@@ -33,18 +31,12 @@ export default ({ Mensagem, UserId, key }) => {
                 {Mensagem.image ? <img className={style.image} src={Mensagem.image} alt="Imagem da mensagem" /> : null}
             </div>
             <div className={style.mensagemFooter}>
-                
-                <span>
-                    <button> <img src={like} alt="Gostei"></img></button>    
-                    <button> <img src={unlike} alt="Não gostei"></img> </button>
-                </span>
                 <a className="btn btn-link" href={`/perfil/${Mensagem.usuario._id}`}>Ver perfil</a>
-             
                 {Mensagem.permiteComentarios ? (
                     <a className="btn btn-info" href={`/mensagens/${Mensagem.usuario._id}/${0}`}>Detalhes</a>
                 ) : (
-                    <></>
-                    
+                    <>
+                    </>
                 )}
                 
                 {UserId === Mensagem.usuario._id ? (
@@ -53,8 +45,6 @@ export default ({ Mensagem, UserId, key }) => {
                 ) : (
                     <button className="btn btn-danger" onClick={sendDenuncia}>Denunciar</button>
                 )}
-
-                <button className="btn btn-danger" onClick={sendDenuncia}>Denunciar</button>    
             </div>
         </div>
     );
