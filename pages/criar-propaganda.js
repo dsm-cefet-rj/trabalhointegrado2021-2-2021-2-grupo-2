@@ -1,5 +1,6 @@
 import React from "react";
 import DefaultLayout from "../components/DefaultLayout";
+import DefaultLayout from "../components/Carregando";
 import { useSession } from "next-auth/react"
 
 const CriarPropaganda = () => {
@@ -93,8 +94,7 @@ const CriarPropaganda = () => {
 
                 ) : (
                     <>
-                        <h1>E necessario esta logado para ver essa pagina</h1>
-                        <a href="/">Login</a>
+                        <Carregando/>
                     </>
                 )
             }

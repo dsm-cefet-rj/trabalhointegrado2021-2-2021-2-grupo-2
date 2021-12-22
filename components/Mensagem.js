@@ -1,6 +1,7 @@
 import React from "react";
 import style from "../styles/Mensagem.module.scss";
-
+import like from '../public/like.png'; 
+import unlike from '../public/unlike.PNG'
 
 export default ({ Mensagem, UserId, key }) => {    
     const sendDenuncia = () => {
@@ -33,6 +34,10 @@ export default ({ Mensagem, UserId, key }) => {
             </div>
             <div className={style.mensagemFooter}>
                 
+                <span>
+                    <button> <img src={like} alt="Gostei"></img></button>    
+                    <button> <img src={unlike} alt="Não gostei"></img> </button>
+                </span>
                 <a className="btn btn-link" href={`/perfil/${Mensagem.usuario._id}`}>Ver perfil</a>
              
                 {Mensagem.permiteComentarios ? (

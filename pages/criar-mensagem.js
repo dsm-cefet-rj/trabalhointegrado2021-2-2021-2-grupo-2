@@ -1,5 +1,6 @@
 import React from "react";
 import DefaultLayout from "../components/DefaultLayout";
+import DefaultLayout from "../components/Carregando";
 import { useSession } from "next-auth/react"
 
 // Componente de mensagem de nova mensagem
@@ -243,8 +244,7 @@ const NovaMensagemForm = () => {
     } else {
         return (
             <>
-                <h1>E necessario esta logado para ver essa pagina</h1>
-                <a href="/">Login</a>
+                <Carregando/>
             </>
         );
     }

@@ -1,6 +1,7 @@
 import { useSession } from "next-auth/react"
 import React, { useEffect } from "react";
 import DefaultLayout from '../../components/DefaultLayout';
+import DefaultLayout from "../components/Carregando";
 
 export default function PerfilPage() {
     const { data: session } = useSession();
@@ -78,8 +79,7 @@ export default function PerfilPage() {
                 </DefaultLayout>
             </>) : (
                 <>
-                    <h1>E necessario esta logado para ver essa pagina</h1>
-                    <a href="/">Login</a>
+                    <Carregando/>
                 </>
             )}
         </>

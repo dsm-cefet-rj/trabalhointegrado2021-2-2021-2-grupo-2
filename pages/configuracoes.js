@@ -1,5 +1,6 @@
 import { useSession } from "next-auth/react"
 import DefaultLayout from "../components/DefaultLayout";
+import DefaultLayout from "../components/Carregando";
 import { Dropdown } from "react-bootstrap";
 import React from "react";
 import style from "../styles/configuracoes.module.scss"
@@ -91,8 +92,7 @@ const configuracoes = () => {
                 </DefaultLayout>
             ) : (
                 <>
-                    <h1>E necessario esta logado para ver essa pagina</h1>
-                    <a href="/">Login</a>
+                    <Carregando/>
                 </>
             )}
         </>

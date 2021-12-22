@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useSession } from "next-auth/react"
 import React, { useEffect } from "react";
 import DefaultLayout from '../../components/DefaultLayout';
+import DefaultLayout from "../components/Carregando";
 import Mensagem from "../../components/Mensagem";
 import style from "../../styles/[_id].module.scss";
 
@@ -79,8 +80,7 @@ export default function PerfilPage() {
             </>
             ) : (
                 <>
-                    <h1>E necessario esta logado para ver essa pagina</h1>
-                    <a href="/">Login</a>
+                    <Carregando/>
                 </>
             )}
         </>
