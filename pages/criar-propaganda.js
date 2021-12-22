@@ -8,6 +8,7 @@ const CriarPropaganda = () => {
     const [imagemPreview, setImagemPreview] = React.useState("");
     const [link, setLink] = React.useState("");
     const [duracao, setDuracao] = React.useState("");
+    const [error, setError] = React.useState("");
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -26,6 +27,26 @@ const CriarPropaganda = () => {
         }
     }
 
+    const handleSubmit = async () => {
+        const response = await fetch("/api/propagandas", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                imagem,
+                link,
+                duracao,
+            })
+        });
+        if (response.ok) {
+            alert("Propaganda criada com sucesso!");
+            window.location.href = "/";
+        } else {
+            setError("Erro ao criar propaganda");
+        }
+    }
+
     return (
         <>
             {
@@ -34,6 +55,15 @@ const CriarPropaganda = () => {
                         <DefaultLayout>
                             <div className="col-12">
                                 <h1 className="text-muted text-center">Criação de propaganda</h1>
+                            </div>
+                            <div className="row" id='erro'>
+                                <div className="col-12">
+                                    <div className="alert alert-danger" role="alert" style={{
+                                        display: erro ? "block" : "none"
+                                    }}>
+                                        {erro}
+                                    </div>
+                                </div>
                             </div>
                             <form action="/api/propagandas" method="post" enctype="multipart/form-data">
                                 <div className="p-3 row">
@@ -55,7 +85,7 @@ const CriarPropaganda = () => {
                                     </div>
                                 </div>
                                 <div className="p-1 row">
-                                    <button className="btn btn-success" type="submit">Pagamento</button>
+                                    <button className="btn btn-success" onClick={handleSubmit}>Pagamento</button>
                                 </div>
                             </form>
                         </DefaultLayout>
