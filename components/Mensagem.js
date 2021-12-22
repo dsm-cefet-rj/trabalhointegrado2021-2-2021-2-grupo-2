@@ -1,8 +1,10 @@
 import React from "react";
 import style from "../styles/Mensagem.module.scss";
 
+
 export default ({ Mensagem, UserId, key }) => {    
     const sendDenuncia = () => {
+        alert('Sua denúncia foi registrada com sucesso')
         fetch("api/denuncia", {
             method: "POST",
             headers: {
@@ -30,12 +32,16 @@ export default ({ Mensagem, UserId, key }) => {
                 {Mensagem.image ? <img className={style.image} src={Mensagem.image} alt="Imagem da mensagem" /> : null}
             </div>
             <div className={style.mensagemFooter}>
+                
                 <a className="btn btn-link" href={`/perfil/${Mensagem.usuario._id}`}>Ver perfil</a>
+             
                 {Mensagem.permiteComentarios ? (
                     <a className="btn btn-info" href={`/mensagens/${Mensagem.usuario._id}/${0}`}>Detalhes</a>
                 ) : (
                     <></>
+                    
                 )}
+                
                 {UserId === Mensagem.usuario._id ? (
                     <>
                     </>
@@ -43,7 +49,7 @@ export default ({ Mensagem, UserId, key }) => {
                     <button className="btn btn-danger" onClick={sendDenuncia}>Denunciar</button>
                 )}
 
-
+                <button className="btn btn-danger" onClick={sendDenuncia}>Denunciar</button>    
             </div>
         </div>
     );
