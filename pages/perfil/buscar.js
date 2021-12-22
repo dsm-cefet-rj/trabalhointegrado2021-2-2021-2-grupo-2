@@ -1,7 +1,7 @@
 import { useSession } from "next-auth/react"
 import React, { useEffect } from "react";
 import DefaultLayout from '../../components/DefaultLayout';
-import DefaultLayout from "../components/Carregando";
+import Carregando from "../../components/Carregando";
 
 export default function PerfilPage() {
     const { data: session } = useSession();

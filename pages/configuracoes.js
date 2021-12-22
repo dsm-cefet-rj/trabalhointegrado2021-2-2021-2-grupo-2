@@ -1,6 +1,6 @@
 import { useSession } from "next-auth/react"
 import DefaultLayout from "../components/DefaultLayout";
-import DefaultLayout from "../components/Carregando";
+import Carregando from "../components/Carregando";
 import { Dropdown } from "react-bootstrap";
 import React from "react";
 import style from "../styles/configuracoes.module.scss"

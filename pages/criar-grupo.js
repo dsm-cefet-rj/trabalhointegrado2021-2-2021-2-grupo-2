@@ -1,6 +1,6 @@
 import React from "react";
 import DefaultLayout from "../components/DefaultLayout";
-import DefaultLayout from "../components/Carregando";
+import Carregando from "../components/Carregando";
 import { useSession } from "next-auth/react"
 
 const CriarGrupo = () => {
