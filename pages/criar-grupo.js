@@ -6,8 +6,9 @@ const CriarGrupo = () => {
     const { data: session } = useSession()
     const [imagem, setImagem] = React.useState("");
     const [imagemPreview, setImagemPreview] = React.useState("");
-    const [name, setName] = React.useState("");
-    const [description, setDescription] = React.useState("");
+    const [nome, setName] = React.useState("");
+    const [descricao, setDescription] = React.useState("");
+    const [error, setError] = React.useState("");
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -25,6 +26,27 @@ const CriarGrupo = () => {
                 break;
         }
     }
+
+    const handleSubmit = async () => {
+        const response = await fetch("/api/grupos", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                imagem,
+                nome,
+                descricao,
+            })
+        });
+        if (response.ok) {
+            alert("Grupo criado com sucesso!");
+            window.location.href = "/";
+        } else {
+            setError("Erro ao criar grupo");
+        }
+    }
+
     return (
         <>
             {
@@ -35,17 +57,26 @@ const CriarGrupo = () => {
                                 <h1 className="text-muted text-center">Criação de Grupo</h1>
                             </div>
                             <div className="container">
+                                <div className="row" id='erro'>
+                                    <div className="col-12">
+                                        <div className="alert alert-danger" role="alert" style={{
+                                            display: erro ? "block" : "none"
+                                        }}>
+                                            {erro}
+                                        </div>
+                                    </div>
+                                </div>
                                 <form action="/api/grupos" method="post" enctype="multipart/form-data">
                                     <div className="p-3 row">
                                         <div className="form-group">
                                             <label htmlFor="name">Nome</label>
-                                            <input type="text" name="name" id="name" value={name} onChange={handleChange} />
+                                            <input type="text" name="name" id="name" value={nome} onChange={handleChange} />
                                         </div>
                                     </div>
                                     <div className="p-3 row">
                                         <div className="form-group">
                                             <label htmlFor="description">Descrição</label>
-                                            <input type="text" name="description" id="description" value={description} onChange={handleChange} />
+                                            <input type="text" name="description" id="description" value={descricao} onChange={handleChange} />
                                         </div>
                                     </div>
                                     <div className="p-3 row">
@@ -55,7 +86,7 @@ const CriarGrupo = () => {
                                         </div>
                                     </div>
                                     <div className="p-3 row">
-                                        <button className="btn btn-success" type="submit">Criar Grupo</button>
+                                        <button className="btn btn-success" onClick={handleSubmit}>Criar Grupo</button>
                                     </div>
                                 </form>
                             </div>
