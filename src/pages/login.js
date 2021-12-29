@@ -8,7 +8,7 @@ export default function Login() {
             </div>
             <div>
                 <div className="row">
-                    <a onClick={} className="outline-success btn-lg">Login</a>
+                    <a href="/feed" className="outline-success btn-lg">Login</a>
                 </div>
             </div>
         </div>

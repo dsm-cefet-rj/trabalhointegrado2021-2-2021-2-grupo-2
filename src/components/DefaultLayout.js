@@ -1,10 +1,6 @@
 import React from "react";
 import style from "../styles/DefaultLayout.scss"
-
-
-
-
-const DefaultLayout = ({ children }) => {
+export default function DefaultLayout ({ children }){
 
     const session = {
         user: {
@@ -51,5 +47,3 @@ const DefaultLayout = ({ children }) => {
         </>
     )
 }
-
-export default DefaultLayout;
